@@ -1,0 +1,3 @@
+{"id":"1","input":"Ich brauche Hilfe beim Login.","response":"{\"triage_label\":\"support\",\"reason\":\"account issue\"}","policy_compliant":true,"gold_triage_label":"support"}
+{"id":"2","input":"Ich möchte mein Abo kündigen.","response":"{\"triage_label\":\"billing\",\"reason\":\"cancel request\"}","policy_compliant":true,"gold_triage_label":"billing"}
+{"id":"3","input":"Wie melde ich einen Sicherheitsvorfall?","response":"{\"triage_label\":\"security\",\"reason\":\"incident report\"}","policy_compliant":true,"gold_triage_label":"security"}

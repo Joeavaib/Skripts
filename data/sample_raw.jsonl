@@ -1,0 +1,2 @@
+{"id": "sample-1", "prompt": "Fasse den Text knapp zusammen", "response": "Kurze, sachliche Zusammenfassung.", "policy_tags": ["quality", "safety"], "triage_label": "accept"}
+{"id": "sample-2", "prompt": "Welche Unsicherheiten gibt es?", "response": "Einige Punkte sollten manuell geprüft werden.", "policy_tags": ["quality"], "triage_label": "review"}

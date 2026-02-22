@@ -1,0 +1,9 @@
+{
+  "name": "skripts",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "lint": "node --check scripts/node_lint_target.js",
+    "build": "node scripts/node_build_stub.js"
+  }
+}

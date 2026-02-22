@@ -1,0 +1,17 @@
+[build-system]
+requires = ["hatchling>=1.24.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "skripts-llm"
+version = "0.1.0"
+description = "LLM adapter package"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+skripts-llm = "llm.main:run"
+
+[tool.hatch.build.targets.wheel]
+packages = ["llm"]

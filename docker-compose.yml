@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  api:
+    image: python:3.11-slim
+    working_dir: /workspace
+    command: python apps/api/api/main.py
+    volumes:
+      - ./:/workspace
+    env_file:
+      - .env
+    ports:
+      - "${API_PORT:-8000}:8000"
+
+  workers:
+    image: python:3.11-slim
+    working_dir: /workspace
+    command: python apps/workers/workers/main.py
+    volumes:
+      - ./:/workspace
+    env_file:
+      - .env
+
+  web:
+    image: node:20-alpine
+    working_dir: /workspace/apps/web
+    command: sh -c "npm install --no-fund --no-audit && npm run dev"
+    volumes:
+      - ./:/workspace
+    env_file:
+      - .env
+    ports:
+      - "${WEB_PORT:-3000}:3000"

@@ -1,0 +1,32 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  layout-and-bootstrap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate repository layout
+        run: |
+          test -d apps/api
+          test -d apps/workers
+          test -d apps/web
+          test -d packages/schemas
+          test -d packages/policy
+          test -d packages/graph
+          test -d packages/llm
+          test -d packages/eval
+      - name: Validate Python boot modules
+        run: |
+          python apps/api/api/main.py
+          python apps/workers/workers/main.py
+          python packages/schemas/schemas/main.py
+          python packages/policy/policy/main.py
+          python packages/graph/graph/main.py
+          python packages/llm/llm/main.py
+          python packages/eval/eval/main.py
+      - name: Validate web bootstrap
+        run: node --check apps/web/src/main.js

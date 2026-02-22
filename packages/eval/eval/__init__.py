@@ -1,0 +1,1 @@
+EVAL_SUITE = "smoke"

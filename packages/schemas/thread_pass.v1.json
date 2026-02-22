@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skripts.local/schemas/thread_pass.v1.json",
+  "title": "ThreadPassV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "thread_id",
+    "pass_id",
+    "pass_index",
+    "created_at",
+    "planner_summary",
+    "action_card_ids",
+    "timeline_event_ids",
+    "skill_registry_id"
+  ],
+  "properties": {
+    "thread_id": {"type": "string", "minLength": 1},
+    "pass_id": {"type": "string", "minLength": 1},
+    "pass_index": {"type": "integer", "minimum": 0},
+    "created_at": {"type": "string", "format": "date-time"},
+    "planner_summary": {"type": "string", "minLength": 1},
+    "action_card_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "timeline_event_ids": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "skill_registry_id": {"type": "string", "minLength": 1}
+  }
+}

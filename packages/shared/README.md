@@ -1,0 +1,3 @@
+# shared
+
+Gemeinsame, sprachunabhängige Artefakte.

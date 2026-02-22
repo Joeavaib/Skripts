@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skripts-api"
+version = "0.1.0"
+description = "Minimal API service for the Skripts monorepo"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.111.0,<1.0.0",
+  "uvicorn[standard]>=0.30.0,<1.0.0",
+  "redis>=5.0.0,<6.0.0",
+  "psycopg[binary]>=3.1.0,<4.0.0"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]

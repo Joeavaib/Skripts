@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skripts-workers"
+version = "0.1.0"
+description = "Minimal Celery worker setup for the Skripts monorepo"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "celery[redis]>=5.4.0,<6.0.0"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]

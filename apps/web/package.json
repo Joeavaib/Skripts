@@ -1,0 +1,9 @@
+{
+  "name": "skripts-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Minimal web service for Skripts",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

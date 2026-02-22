@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  python_quality:
+    name: API and workers quality gates
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install tooling
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff mypy pytest
+
+      - name: Ruff
+        run: |
+          ruff check apps/api apps/workers packages/policy
+
+      - name: Mypy
+        run: |
+          mypy --config-file apps/api/mypy.ini apps/api
+          mypy --config-file apps/workers/mypy.ini apps/workers
+          MYPYPATH=packages/policy mypy packages/policy
+
+      - name: Pytest
+        run: |
+          PYTHONPATH=.:packages/policy pytest apps/api/tests apps/workers/tests packages/policy/tests
+
+  web_quality:
+    name: Web quality gates
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build

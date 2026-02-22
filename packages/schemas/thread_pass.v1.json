@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "thread_pass.v1",
+  "title": "ThreadPassV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "thread_id",
+    "handoff_at",
+    "summary",
+    "action_cards",
+    "skill_registry",
+    "timeline"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "thread_pass.v1"
+    },
+    "thread_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "handoff_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "action_cards": {
+      "type": "array",
+      "items": {
+        "$ref": "action_card.v1"
+      }
+    },
+    "skill_registry": {
+      "$ref": "skill_registry.v1"
+    },
+    "timeline": {
+      "type": "array",
+      "items": {
+        "$ref": "timeline_event.v1"
+      }
+    }
+  }
+}

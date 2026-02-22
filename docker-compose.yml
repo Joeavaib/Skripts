@@ -1,0 +1,27 @@
+services:
+  api:
+    image: python:3.11-slim
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+    command: python apps/api/src/api/main.py
+    env_file:
+      - .env
+
+  workers:
+    image: python:3.11-slim
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+    command: python apps/workers/src/workers/main.py
+    env_file:
+      - .env
+
+  web:
+    image: node:20-alpine
+    working_dir: /workspace/apps/web
+    volumes:
+      - ./:/workspace
+    command: sh -lc "npm install && npm run build && npm run start"
+    env_file:
+      - .env

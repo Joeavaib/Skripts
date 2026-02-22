@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skripts.local/schemas/timeline_event.v1.json",
+  "title": "TimelineEventV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["event_id", "event_type", "occurred_at", "message"],
+  "properties": {
+    "event_id": {"type": "string", "minLength": 1},
+    "event_type": {
+      "type": "string",
+      "enum": ["planner_started", "planner_passed", "planner_failed", "planner_saved"]
+    },
+    "occurred_at": {"type": "string", "format": "date-time"},
+    "message": {"type": "string", "minLength": 1},
+    "actor": {"type": "string"},
+    "action_card_id": {"type": "string"},
+    "details": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pass_index": {"type": "integer", "minimum": 0},
+        "latency_ms": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}
